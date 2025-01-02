@@ -1,0 +1,158 @@
+<body th:fragment="cuerpologinregistro" style="background: #08669c; background: linear-gradient(to right, #08669c, #08269c)">
+   <div class="container w-50 mt-3">
+      <div class="container w-100 bg-primary mt-3 rounded shadow">
+         <div class="row align-items-stretch">
+            <div class="col bg-white p-5 rounded-end">
+               <div class="text-center">
+                  <img th:src="@{/imagenes/Logo.png}" alt="Imagen Logo" width="200">
+               </div>
+               <h2 class="fw-bold text-center py-5">Registro</h2>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('nombre')}">
+                  <span th:text="${errores.nombre}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('primerApellido')}">
+                  <span th:text="${errores.primerApellido}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('segundoApellido')}">
+                  <span th:text="${errores.segundoApellido}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('fechaNacimiento')}">
+                  <span th:text="${errores.fechaNacimiento}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('edad')}">
+                  <span th:text="${errores.edad}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('telefono')}">
+                  <span th:text="${errores.telefono}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('correo')}">
+                  <span th:text="${errores.correo}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('password')}">
+                  <span th:text="${errores.password}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('confirmePassword')}">
+                  <span th:text="${errores.confirmePassword}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div class="alert alert-danger alert-dismissible fade show"
+                  th:if="${errores != null && errores.containsKey('rfc')}">
+                  <span th:text="${errores.rfc}"> </span>
+                  <button th:if="${errores!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <div th:if="${mensaje!=null}"
+                  th:class="'alert alert-'+${clase}+'  alert-dismissible fade show'">
+                  <span th:text="${mensaje}"> </span>
+                  <button th:if="${mensaje!=null}" type="button" class="btn-close"
+                     data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <form name="form" method="POST" th:object="${proveedor}" class="row gy-12 gx-6 align-items-center"
+                  th:action="@{/acceso/registro}">
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="nombre" class="form-label">Nombre:</label>
+                     <input type="text" class="form-control" th:field="*{nombre}"
+                        onkeypress="return soloLetras(event)"
+                        placeholder="Nombre" required="true" autofocus="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="primerApellido" class="form-label">Primer Apellido:</label>
+                     <input type="text" class="form-control" th:field="*{primerApellido}"
+                        onkeypress="return soloLetrasCurpRfc(event)"
+                        placeholder="Primer Apellido" required="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="segundoApellido" class="form-label">Segundo Apellido:</label>
+                     <input type="text" class="form-control" th:field="*{segundoApellido}"
+                        onkeypress="return soloLetrasCurpRfc(event)"
+                        placeholder="Segundo Apellido" required="true" autofocus="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                     <input type="date" class="form-control" th:field="*{fechaNacimiento}"
+                        placeholder="Fecha de Nacimiento" required="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="edad" class="form-label">Edad:</label>
+                     <input type="number" class="form-control" th:field="*{edad}"
+                        placeholder="Edad" required="true" autofocus="true" 
+                        onkeypress="return soloNumeros(event)"
+                        maxlength="2" 
+                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="telefono" class="form-label">Telefono:</label>
+                     <input type="text" class="form-control" th:field="*{telefono}"
+                        onkeypress="return soloNumeros(event)"
+                        maxlength="10" 
+                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        placeholder="telefono" required="true" autofocus="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6 campoNacionales">
+                     <label for="rfc" class="form-label">RFC:</label>
+                     <input type="text" class="form-control" th:field="*{rfc}"
+                        onkeypress="return soloLetrasCurpRfc(event)"
+                        maxlength="14"
+                        placeholder="RFC" required="true" autofocus="true" 
+                        oninput="validarInputRFC(this)" id="rfc" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="correo" class="form-label">Correo Electronico:</label>
+                     <input type="email" class="form-control" th:field="*{correo}"
+                        onkeypress="return soloCorreo(event)"
+                        placeholder="Correo Electronico" required="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="password" class="form-label">Contraseña:</label>
+                     <input type="password" class="form-control" th:field="*{password}"
+                        onkeypress="return soloPassword(event)"
+                        placeholder="Caracteres especiales permitidos ;_-.!" required="true" />
+                  </div>
+                  <div class="mb-4 col-sm-12 col-md-12 col-lg-6">
+                     <label for="confirmePassword" class="form-label">Confirme Contraseña:</label>
+                     <input type="password" class="form-control" th:field="*{confirmePassword}"
+                        onkeypress="return soloPassword(event)"
+                        placeholder="Confirme Contraseña" required="true" />
+                  </div>
+                  <div class="d-grid">
+                     <button type="submit" class="btn btn-primary" id="btnGuardaRegistro">Guardar</button>
+                  </div>
+                  <div class="my-3 text-center"> 
+                     <span>
+                     ¿Ya tienes cuenta?
+                     <a th:href="@{/acceso/login}">Iniciar Sesión</a>
+                     </span>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div th:replace="~{layout/login/frontend :: scripts}"></div>
+   </div>
+</body>

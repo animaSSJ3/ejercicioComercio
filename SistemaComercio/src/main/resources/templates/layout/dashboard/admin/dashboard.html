@@ -1,0 +1,21 @@
+<body th:fragment="dashboard">
+    <div class="wrapper">
+        <aside th:replace="~{layout/dashboard/admin/menulateral :: barraLateral}">
+        </aside>
+        <div class="main">
+            <nav th:replace="~{layout/dashboard/admin/menutitulo :: barraTitulo}">
+
+            </nav>
+            <main th:replace="~{layout/dashboard/admin/cuerpo :: cuerpo}">
+
+            </main>
+            <a href="#" class="theme-toggle">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-sun"></i>
+            </a>
+            <footer th:replace="~{layout/dashboard/admin/footer :: piepagina}">
+            </footer>
+        </div>
+    </div>
+    <div th:replace="~{layout/dashboard/admin/frontend_dashboard :: scripts}"></div>
+</body>

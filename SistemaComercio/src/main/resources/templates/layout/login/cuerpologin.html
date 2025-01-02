@@ -1,0 +1,88 @@
+<body th:fragment="cuerpologin" style="background: #08669c; background: linear-gradient(to right, #08669c, #08269c)">
+   <div class="container w-75 bg-primary mt-5 rounded shadow">
+      <div class="row align-items-stretch">
+         <div class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded" 
+            th:style="'background-image: url(' + @{/imagenes/FondoComercio.png} + '); 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;'">
+         </div>
+         <div class="col bg-white p-5 rounded-end">
+            <div class="text-center">
+               <img th:src="@{/imagenes/Logo.png}" alt="Imagen Logo" width="200">
+            </div>
+            <h2 class="fw-bold text-center py-5">Bienvenido</h2>
+            <!-- LOGIN -->
+            <div th:if="${mensaje!=null}"
+               th:class="'alert alert-'+${clase}+'  alert-dismissible fade show'">
+               <span th:text="${mensaje}"> </span>
+               <button th:if="${mensaje!=null}" type="button" class="btn-close"
+                  data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="form" method="POST" th:action="@{/acceso/login}">
+               <div class="mb-4">
+                  <label for="username" class="form-label">Correo Electronico</label>
+                  <input type="email" class="form-control" name="username" id="username"
+                     placeholder="Correo Electronico" required="true" autofocus="true" 
+                     onkeypress="return soloCorreo(event)"/>
+               </div>
+               <div class="mb-4">
+                  <label for="password" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" name="password" id="password" 
+                     placeholder="Contraseña" required="true" />
+               </div>
+               <div class="mb-4 form-check">
+                  <input type="checkbox" name="connected" value="form-check-input">
+                  <label for="connected" class="form-check-label">Mantenerme Conectado</label>
+               </div>
+               <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+               </div>
+               <div class="my-3 text-center"> 
+                  <span>
+                  ¿No tienes cuenta?
+                  <a th:href="@{/acceso/registro}">Registrate</a>
+                  </span>
+                  <br/>
+                  <span>
+                  ¿Olvidaste tu contraseña?
+                  <a th:href="@{/acceso/registro}">Recuperar Password</a>
+                  </span>
+               </div>
+            </form>
+            <div class="container w-100 my-5">
+               <div class="row text-center">
+                  <div class="col-12">Iniciar Sesion</div>
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <button class="btn btn-outline-primary w-100 my-1">
+                        <div class="row align-items-center">
+                           <div class="col-2 d-none d-md-block">
+                              <img th:src="@{/imagenes/Facebook.png}" alt="Facebook" width="32">
+                           </div>
+                           <div class="col-12 col-md-10 text-center">
+                              Facebook
+                           </div>
+                        </div>
+                     </button>
+                  </div>
+                  <div class="col">
+                     <button class="btn btn-outline-danger w-100 my-1">
+                        <div class="row align-items-center">
+                           <div class="col-2 d-none d-md-block">
+                              <img th:src="@{/imagenes/Google.png}" alt="Google" width="32">
+                           </div>
+                           <div class="col-12 col-md-10 text-center">
+                              Google
+                           </div>
+                        </div>
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div th:replace="~{layout/login/frontend :: scripts}"></div>
+</body>

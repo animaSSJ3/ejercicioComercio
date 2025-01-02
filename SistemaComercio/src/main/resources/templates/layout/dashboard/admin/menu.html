@@ -1,0 +1,22 @@
+<div th:fragment="menu">
+	<ul class="nav">
+		<li class="nav-item">
+			<a class="nav-link"th:href="@{/acceso/registro}">Registro</a>
+		</li>
+		<li sec:authorize="isAuthenticated()" class="nav-item">
+			<a class="nav-link" href="javascript:void(0);" onclick="document.logout_form.submit();">Salir</a>
+		</li>
+	</ul>
+	<!-- PREGUNTA SI EL RECURSO CARGADO TIENE AUTORIZACION SE MUESTRA, CASO CONTRARIO NO -->
+	<div sec:authorize="isAuthenticated()">
+		<!-- PERMITE OBTENER EL NOMBRE DE USUARIO -->
+		Hola <span sec:authentication="name"></span> |
+		<!-- PODEMOS OBTENER LOS ROLES DEL USUARIO --> 
+		Roles <span sec:authentication="principal.authorities"></span>
+
+		<form name="logout_form" th:action="@{/logout}" method="POST">
+
+		</form>
+
+	</div>
+</div>

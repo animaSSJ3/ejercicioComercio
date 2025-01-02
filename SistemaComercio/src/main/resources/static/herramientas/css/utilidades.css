@@ -1,0 +1,6 @@
+#rfc {
+    border-color: red;
+}
+#rfc.ok {
+    border-color: green;
+}

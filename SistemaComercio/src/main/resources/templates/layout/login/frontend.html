@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head th:fragment="head(title, links)">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<link rel="icon" th:href="@{/imagenes/LogoCosmo.png}" />
+      	<title>Sistema de Proveedores</title>
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/bootstrap_5/css/bootstrap.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/fontawesome_6/css/all.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/sweetalert2/css/sweetalert2.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/sweetalert2/css/animate.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/css/bootstrap-icons.min.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/css/fileinput.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/themes/explorer-fa6/theme.css}">
+      	<link rel="stylesheet" type="text/css" th:href="@{/herramientas/frameworks_plugins/jqueryConfirm/css/jquery-confirm.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/herramientas/css/utilidades.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/herramientas/css/dashboard.css}">
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/jquery/js/jquery-3.7.1.min.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/sweetalert2/js/sweetalert2.all.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/fontawesome_6/js/all.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/js/plugins/buffer.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/js/plugins/filetype.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/js/plugins/piexif.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/js/plugins/sortable.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/js/fileinput.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/js/locales/es.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/bootstrap_5/otros/file_input/themes/explorer-fa6/theme.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/frameworks_plugins/jqueryConfirm/js/jquery-confirm.js}"></script>
+   </head>
+   <body th:fragment="cuerpo" style="background: #ffe259; background: linear-gradient(to right, #ffa751, #ffe259)">
+
+
+	
+	
+	
+	
+	
+
+	<div th:fragment="scripts">
+	
+        <script type="text/javascript" th:src="@{/herramientas/js/utilidades.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/js/dashboard.js}"></script>
+        <script type="text/javascript" th:src="@{/herramientas/js/mensajes_personalizados.js}"></script>
+	
+	</div>
+   </body>
+</html>

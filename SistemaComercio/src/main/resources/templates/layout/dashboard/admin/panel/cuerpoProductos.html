@@ -1,0 +1,73 @@
+<main th:fragment="cuerpoProductos" class="content px-3 py-2">
+	<div class="container-fluid">
+		<h3>Productos</h3>
+		<br/>
+		
+		<table class="table table-bordered table-striped table-hover table-responsive text-center">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>CODIGO</th>
+					<th>NOMBRE</th>
+					<th>PRECIO</th>
+					<th>CATEGORIA</th>
+					<td>ACCIONES</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="prod:${productos}">
+					<td th:text="${prod.id}"></td>
+					<td th:text="${prod.codigo}"></td>
+					<td th:text="${prod.nombre}"></td>
+					<td th:text="${prod.precio} "></td>
+					<td th:text="${prod.idcategoria.nombre}"></td>
+					<td>
+						<button class="btn btn-primary" title="Editar" th:attr="onclick=|Edit('${prod.id}')|">
+							<i class="fa-solid fa-pen-to-square"></i>
+						</button>
+						<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminaProducto" title="Eliminar" th:attr="onclick=|Delete('${prod.id}')|">
+							<i class="fa-solid fa-trash"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+					            <!-- Modal -->
+		<div class="modal fade" id="modalEliminaProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea eliminar el producto?</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        
+	             <form name="form" method="POST"class="row gy-12 gx-6 align-items-center"
+			         th:action="@{/dashboard-admin/eliminar}">
+			         
+			         <div class="mb-4 col-sm-12 col-md-12 col-lg-3">
+			            <label for="id" class="form-label">ID:</label>
+			            <input type="number" class="form-control" name="id" id="id" 
+			               required="true" autofocus="true"  />
+			         </div>
+			         
+			       <div class="d-grid gap-2">
+			         	<br/>
+			         	<br/>
+			            <button type="submit" class="btn btn-primary" id="btnBuscaArea">Aceptar</button>
+			            <a th:href="@{/dashboard-admin/home}" class="btn btn-success">Cancelar</a>
+			         </div>
+			      </form>
+		        
+		        
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+		
+	</div>
+	
+</main>
